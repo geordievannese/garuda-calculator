@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NBC GARUDA Calculator</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>NBC GARUDA – General Aneurysm Risk Utility for Decision Aid</h1>
+      <p class="muted">Fill what you have; Unknown is allowed for every categorical field.</p>
+
+      <section class="grid">
+        <form id="calc-form" class="card">
+          <h2>Inputs</h2>
+          <div class="grid two">
+            <label>Age (years)
+              <input type="number" id="age" placeholder="e.g., 58" min="0" max="120" />
+            </label>
+            <label>GCS total (3–15)
+              <input type="number" id="gcs" placeholder="15" min="3" max="15" />
+            </label>
+
+            <label>WFNS grade
+              <select id="wfns">
+                <option value="">Unknown</option>
+                <option value="1">I (1)</option>
+                <option value="2">II (2)</option>
+                <option value="3">III (3)</option>
+                <option value="4">IV (4)</option>
+                <option value="5">V (5)</option>
+              </select>
+            </label>
+            <label>Hypertension
+              <select id="htn">
+                <option value="">Unknown</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </label>
+
+            <label>Diabetes
+              <select id="dm">
+                <option value="">Unknown</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </label>
+            <label>CVD
+              <select id="cvd">
+                <option value="">Unknown</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </label>
+
+            <label>Current smoking
+              <select id="smoke">
+                <option value="">Unknown</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </label>
+            <label>Family history (aneurysm/SAH)
+              <select id="famHist">
+                <option value="">Unknown</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </label>
+
+            <label>Ruptured aneurysm
+              <select id="ruptured">
+                <option value="">Unknown</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </label>
+            <label>Hemiparesis
+              <select id="hemiparesis">
+                <option value="">Unknown</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </label>
+
+            <label>Ptosis
+              <select id="ptosis">
+                <option value="">Unknown</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </label>
+            <label>Seizure (pre-op)
+              <select id="seizure">
+                <option value="">Unknown</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </label>
+
+            <label>Multiple aneurysms
+              <select id="multiple">
+                <option value="">Unknown</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </label>
+            <label>IOM used
+              <select id="iom">
+                <option value="">Unknown</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </label>
+
+            <label>Location of aneurysm
+              <select id="location">
+                <option value="">Unknown</option>
+                <option value="acha">AChA</option>
+                <option value="acom">ACom</option>
+                <option value="basilar">Basilar</option>
+                <option value="ica">ICA</option>
+                <option value="mca">MCA</option>
+                <option value="pcoa">PCoA</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+
+            <label>Dome height (mm)
+              <input type="number" id="dome" step="0.1" min="0" max="50" placeholder="6.0" />
+            </label>
+            <label>Neck width (mm)
+              <input type="number" id="neck" step="0.1" min="0" max="20" placeholder="3.0" />
+            </label>
+
+            <label>Daughter sac
+              <select id="daughter">
+                <option value="">Unknown</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="actions">
+            <button type="submit">Calculate</button>
+            <button type="button" id="reset">Reset</button>
+          </div>
+        </form>
+
+        <div class="card" id="derived">
+          <h2>Derived (auto)</h2>
+          <ul>
+            <li>GCS &lt; 15: <strong id="gcs_lt15">—</strong></li>
+            <li>Dome/Neck ratio: <strong id="dn_ratio">—</strong></li>
+            <li>Neck &gt; 4 mm: <strong id="neck_gt4">—</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="grid three" id="results"></section>
+    </main>
+    <script src="/static/script.js"></script>
+  </body>
+</html>
